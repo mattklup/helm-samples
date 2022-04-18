@@ -38,4 +38,7 @@ helm install --debug --dry-run foo-bar ./charts/hello-world
 helm install --debug --dry-run foo-bar ./charts/hello-world --set menu.drink=slurm
 helm install --debug --dry-run foo-bar ./charts/hello-world --set menu.snack=slurm # appends
 
+# add github helm repo
+helm repo add me https://mattklup.github.io/helm-samples/
+helm install repo-test me/hello-world
 ```
