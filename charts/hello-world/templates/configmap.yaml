@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  hello-world: "Hello World"
+  release-name: "{{ .Release.Name }}"
+  release: {{ quote .Release }}
+  menu: {{ quote .Values.menu }}
+  drink: {{ .Values.menu.drink | upper | quote }}
+  dessert: {{ .Values.menu.dessert | default (printf "%s-cake-%s" "choco" "!") | quote }}
+  {{- if eq .Values.menu.drink "coffee" }}
+  mug: "true"
+  {{- else }}
+  cup: "true"
+  {{- end }}
